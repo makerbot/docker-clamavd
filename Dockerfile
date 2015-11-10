@@ -1,12 +1,10 @@
-FROM debian:jessie
+FROM ubuntu:trusty
 
-MAINTAINER Christian Luginbühl <dinkel@pimprecords.com>
+MAINTAINER Makerbot Devops <devops@makerbot.com>
 
 ENV CLAMAV_VERSION 0.98.7
 
-RUN echo "deb http://http.debian.net/debian/ jessie main contrib non-free" > /etc/apt/sources.list && \
-    echo "deb http://http.debian.net/debian/ jessie-updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb http://security.debian.org/ jessie/updates main contrib non-free" >> /etc/apt/sources.list && \
+RUN bash -c "echo -e deb{,-src}\ http://archive.ubuntu.com/ubuntu/\ $(lsb_release -cs){,-security,-updates}\ multiverse\\\\n >> /etc/apt/sources.list.d/multiverse.list" && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
         clamav-daemon=${CLAMAV_VERSION}* \
