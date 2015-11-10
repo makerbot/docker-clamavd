@@ -7,6 +7,7 @@ ENV CLAMAV_VERSION 0.98.7
 RUN bash -c "echo -e deb{,-src}\ http://archive.ubuntu.com/ubuntu/\ $(lsb_release -cs){,-security,-updates}\ multiverse\\\\n >> /etc/apt/sources.list.d/multiverse.list" && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+        clamav=${CLAMAV_VERSION}* \
         clamav-daemon=${CLAMAV_VERSION}* \
         clamav-freshclam=${CLAMAV_VERSION}* \
         libclamunrar6 \
@@ -25,7 +26,8 @@ RUN mkdir /var/run/clamav && \
 
 RUN sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/clamd.conf && \
     echo "TCPSocket 3310" >> /etc/clamav/clamd.conf && \
-    sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/freshclam.conf
+    sed -i 's/^Foreground .*$/Foreground true/g' /etc/clamav/freshclam.conf && \
+    bash -c 'echo -e ExcludePath\ ^/mnt/root/{proc,sys,dev}/\\n >> /etc/clamav/clamd.conf'
 
 VOLUME ["/var/lib/clamav"]
 
