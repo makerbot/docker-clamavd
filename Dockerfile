@@ -11,7 +11,7 @@ RUN bash -c "echo -e deb{,-src}\ http://archive.ubuntu.com/ubuntu/\ $(lsb_releas
         clamav-daemon=${CLAMAV_VERSION}* \
         clamav-freshclam=${CLAMAV_VERSION}* \
         libclamunrar6 \
-        wget && \
+        wget curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
