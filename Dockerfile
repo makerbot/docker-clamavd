@@ -2,7 +2,7 @@ FROM ubuntu:trusty
 
 MAINTAINER Makerbot Devops <devops@makerbot.com>
 
-ENV CLAMAV_VERSION 0.98.7
+ENV CLAMAV_VERSION 0.99.0
 
 RUN bash -c "echo -e deb{,-src}\ http://archive.ubuntu.com/ubuntu/\ $(lsb_release -cs){,-security,-updates}\ multiverse\\\\n >> /etc/apt/sources.list.d/multiverse.list" && \
     apt-get update && \

@@ -1,3 +1,3 @@
 node {
-  sh "echo hello world"
+  sh "env"
 }
