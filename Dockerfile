@@ -2,14 +2,12 @@ FROM ubuntu:trusty
 
 MAINTAINER Makerbot Devops <devops@makerbot.com>
 
-ENV CLAMAV_VERSION 0.99.0
-
 RUN bash -c "echo -e deb{,-src}\ http://archive.ubuntu.com/ubuntu/\ $(lsb_release -cs){,-security,-updates}\ multiverse\\\\n >> /etc/apt/sources.list.d/multiverse.list" && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-        clamav=${CLAMAV_VERSION}* \
-        clamav-daemon=${CLAMAV_VERSION}* \
-        clamav-freshclam=${CLAMAV_VERSION}* \
+        clamav \
+        clamav-daemon \
+        clamav-freshclam \
         libclamunrar6 \
         wget curl && \
     apt-get clean && \
