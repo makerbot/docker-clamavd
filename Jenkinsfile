@@ -2,5 +2,10 @@
 
 node {
   checkout scm
-  sh "docker-build-publish.sh makerbot/clamavd \${BRANCH_NAME} build"
+  
+  echo scm
+
+  def myContainer = docker.build("makerbot/clamavd:${GIT_BRANCH}")
+
+  echo myContainer
 }
