@@ -3,6 +3,6 @@ node {
 
   sh "ls"
 
-
+  docker.build("makerbot/clamavd")
 
 }
