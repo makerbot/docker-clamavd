@@ -5,7 +5,7 @@ node {
   
   sh "ls"
 
-  def myContainer = docker.build "makerbot/clamavd:${GIT_BRANCH}"
+  #def myContainer = docker.build ("makerbot/clamavd:${GIT_BRANCH}")
 
-  echo myContainer.imageName()
+  #echo myContainer.imageName()
 }
