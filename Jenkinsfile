@@ -3,6 +3,8 @@ node {
 
   sh "ls"
 
-  docker.build("makerbot/clamavd")
+  def myImage = docker.build("makerbot/clamavd")
+
+  echo myImage.id
 
 }
