@@ -1,7 +1,7 @@
 node {
   checkout scm
 
-  echo env
+  sh "env"
 
   sh "ls"
 
