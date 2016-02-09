@@ -1,7 +1,7 @@
 node {
   checkout scm
 
-  echo GIT_BRANCH
+  echo env
 
   sh "ls"
 
