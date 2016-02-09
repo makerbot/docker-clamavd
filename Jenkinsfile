@@ -1,7 +1,7 @@
 node {
   checkout scm
 
-  sh "env"
+  echo env.BRANCH_NAME
 
   sh "ls"
 
