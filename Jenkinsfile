@@ -1,11 +1,7 @@
 node {
   checkout scm
 
-  echo env.BRANCH_NAME
-
-  sh "ls"
-
-  def myImage = docker.build("makerbot/clamavd")
+  def myImage = docker.build("makerbot/clamavd:${env.BRANCH_NAME}")
 
   echo myImage.id
 
