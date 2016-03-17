@@ -1,7 +1,7 @@
 node {
   checkout scm
 
-  stage build
+  stage "build"
   def myImage = docker.build("makerbot/clamavd:${env.BRANCH_NAME}")
 
   echo myImage.id
