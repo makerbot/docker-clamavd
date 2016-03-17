@@ -4,6 +4,7 @@ node {
   stage "build"
   def myImage = docker.build("makerbot/clamavd:${env.BRANCH_NAME}")
 
-  echo myImage.id
+  stage "push"
+  myImage.push()
 
 }
