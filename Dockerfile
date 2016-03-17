@@ -13,9 +13,9 @@ RUN bash -c "echo -e deb{,-src}\ http://archive.ubuntu.com/ubuntu/\ $(lsb_releas
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
-    wget -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd && \
-    wget -O /var/lib/clamav/bytecode.cvd http://database.clamav.net/bytecode.cvd && \
+RUN wget -q -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
+    wget -q -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd && \
+    wget -q -O /var/lib/clamav/bytecode.cvd http://database.clamav.net/bytecode.cvd && \
     chown clamav:clamav /var/lib/clamav/*.cvd
 
 RUN mkdir /var/run/clamav && \
